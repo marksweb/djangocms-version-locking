@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
+
 try:
     from djangocms_moderation import models as moderation_model
 except ImportError:
@@ -55,7 +56,7 @@ def _is_draft_version_locked(message):
             cached_draft_version_user_id = getattr(version, "_draft_version_user_id")
             if cached_draft_version_user_id and cached_draft_version_user_id != user.pk:
                 raise ConditionFailed(
-                    message.format(user="User #{}".format(cached_draft_version_user_id))
+                    message.format(user=f"User #{cached_draft_version_user_id}")
                 )
         except AttributeError:
             draft_version = get_latest_draft_version(version)

@@ -99,7 +99,7 @@ class VersionToolbarOverrideTestCase(CMSTestCase):
         )
         edit_button = find_toolbar_buttons(btn_name, toolbar.toolbar)[0]
 
-        self.assertEqual(edit_button.html_attributes, {'title': "Locked with {}".format(user.get_full_name())})
+        self.assertEqual(edit_button.html_attributes, {'title': f"Locked with {user.get_full_name()}"})
 
     def test_edit_button_when_content_is_locked_users_username_used(self):
         user = self.get_superuser()
@@ -122,4 +122,4 @@ class VersionToolbarOverrideTestCase(CMSTestCase):
         )
         edit_button = find_toolbar_buttons(btn_name, toolbar.toolbar)[0]
 
-        self.assertEqual(edit_button.html_attributes, {'title': "Locked with {}".format(user.username)})
+        self.assertEqual(edit_button.html_attributes, {'title': f"Locked with {user.username}"})

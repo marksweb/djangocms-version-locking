@@ -1,10 +1,9 @@
-from django.conf.urls import url
 from django.contrib import messages
 from django.contrib.admin.utils import unquote
 from django.http import Http404, HttpResponseForbidden, HttpResponseNotAllowed
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
-from django.urls import reverse
+from django.urls import re_path, reverse
 from django.utils.encoding import force_text
 from django.utils.translation import gettext_lazy as _
 
@@ -122,7 +121,7 @@ def _get_urls(func):
     def inner(self, *args, **kwargs):
         url_list = func(self, *args, **kwargs)
         info = self.model._meta.app_label, self.model._meta.model_name
-        url_list.insert(0, url(
+        url_list.insert(0, re_path(
             r'^(.+)/unlock/$',
             self.admin_site.admin_view(self._unlock_view),
             name='{}_{}_unlock'.format(*info),

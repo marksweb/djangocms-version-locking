@@ -25,7 +25,7 @@ class PollsCMSConfig(CMSAppConfig):
     ]
     # Version locking enabled
     djangocms_version_locking_enabled = True
-    version_lock_models = [PollContent, ]
+    version_lock_models = [PollContent]
     # Moderation enabled
     djangocms_moderation_enabled = True
     moderated_models = (PollContent,)

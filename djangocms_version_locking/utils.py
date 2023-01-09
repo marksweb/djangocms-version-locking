@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from urllib.parse import urljoin
 
 from django.conf import settings
@@ -14,5 +12,5 @@ def get_absolute_url(location, site=None):
         scheme = 'https'
     else:
         scheme = 'http'
-    domain = '{}://{}'.format(scheme, site.domain)
+    domain = f'{scheme}://{site.domain}'
     return urljoin(domain, location)
