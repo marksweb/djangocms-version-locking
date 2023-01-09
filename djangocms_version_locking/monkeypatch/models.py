@@ -1,6 +1,9 @@
 from django.utils.translation import gettext_lazy as _
 
-from djangocms_moderation import models as moderation_model
+try:
+    from djangocms_moderation import models as moderation_model
+except ImportError:
+    moderation_model = None
 from djangocms_moderation.helpers import (
     get_moderated_children_from_placeholder,
 )
@@ -99,4 +102,5 @@ def _add_nested_children(self, version, parent_node):
     return added_items
 
 
-moderation_model.ModerationCollection._add_nested_children = _add_nested_children
+if moderation_model:
+    moderation_model.ModerationCollection._add_nested_children = _add_nested_children
