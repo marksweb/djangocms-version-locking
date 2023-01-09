@@ -4,7 +4,7 @@ import djangocms_version_locking
 
 
 INSTALL_REQUIREMENTS = [
-    'Django>=2.2,<4.0',
+    'Django>=2.2',
     'django-cms',
 ]
 
